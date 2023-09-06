@@ -48,7 +48,7 @@ function TextForm({ showalert }) {
       <div className="mb-4 flex flex-col items-center justify-center">
         {/* Label for textarea */}
         <label
-          className="block font-bold text-2xl m-5 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900  bg-clip-text text-transparent"
+          className="block font-bold text-2xl m-5 text-neutral-800"
           htmlFor="message"
         >
           Place Your Text Here
@@ -59,7 +59,7 @@ function TextForm({ showalert }) {
           name="message"
           rows={8}
           placeholder="paste your content here .. "
-          className="px-4 w-3/4 py-2 rounded border-2 border-gray-500 focus:ring focus:ring-blue-400"
+          className="px-4 w-3/4 py-2 rounded border-2 border-neutral-500 bg-neutral-300"
           value={text}
           onChange={handleupchange}
         ></textarea>
@@ -68,7 +68,7 @@ function TextForm({ showalert }) {
       <div className="flex flex-col md:flex-row items-center justify-center md:items-center md:justify-center">
         <div className="md:mr-10 mb-4 md:mb-0">
           {/* words count */}
-          <span className="md:m-2 block md:inline font-semibold md:text-xl text-md bg-gradient-to-b from-gray-900 to-gray-600  bg-clip-text text-transparent">
+          <span className="md:m-2 block md:inline font-semibold md:text-xl text-md text-black">
             Words:
             {
               text.split(/\s+/).filter((word) => {
@@ -77,7 +77,7 @@ function TextForm({ showalert }) {
             }
           </span>
           {/* characters count */}
-          <span className="md:m-2 block md:inline font-semibold md:text-xl text:md bg-gradient-to-b from-gray-900 to-gray-600  bg-clip-text text-transparent">
+          <span className="md:m-2 block md:inline font-semibold md:text-xl text:md text-black">
             Character: {text.length}
           </span>
         </div>
@@ -87,21 +87,17 @@ function TextForm({ showalert }) {
         {/* button for uppercase conversion */}
         <div className="grid grid-cols-3">
           <button
-            className="py-2 px-4 mx-2 bg-gradient-to-r from-slate-500 to-yellow-100 rounded md:text-lg md:font-bold md:inline font-medium text-sm block"
+            className="btn py-2 px-2 border border-solid border-neutral-700 bg-neutral-600  text-neutral-200 rounded text-base font-semibold hover:bg-transparent hover:border hover:border-solid hover:border-neutral-800 hover:text-black"
             onClick={Copy}
             disabled={text.length === 0}
           >
             Copy Text
           </button>
-          <button
-            className="py-2 px-4 mx-2 bg-gradient-to-r from-slate-500 to-yellow-100 rounded md:text-lg md:font-bold md:inline font-medium text-sm block"
-            onClick={Clear}
-            disabled={text.length === 0}
-          >
+          <button className="btn " onClick={Clear} disabled={text.length === 0}>
             Clear Text
           </button>
           <button
-            className="py-2 px-4 mx-2 bg-gradient-to-r from-slate-500 to-yellow-100 rounded md:text-lg md:font-bold md:inline font-medium text-sm block"
+            className="btn "
             onClick={removeSpace}
             disabled={text.length === 0}
           >
@@ -110,7 +106,7 @@ function TextForm({ showalert }) {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-2 ">
           <button
-            className="py-2 px-4 bg-gradient-to-r from-slate-500 to-yellow-100 rounded md:text-lg md:font-bold md:inline font-medium text-sm block mx-2"
+            className="btn"
             onClick={buttonclicked}
             disabled={text.length === 0}
           >
@@ -118,7 +114,7 @@ function TextForm({ showalert }) {
           </button>
           {/* button for lowercase conversion */}
           <button
-            className="py-2 px-4 bg-gradient-to-r from-slate-500 to-yellow-100 rounded md:text-lg md:font-bold md:inline font-medium text-sm block mx-2"
+            className="btn"
             onClick={buttonlow}
             disabled={text.length === 0}
           >
@@ -131,12 +127,13 @@ function TextForm({ showalert }) {
       {/* minutes read for the text */}
 
       <div className="flex items-center justify-center flex-col">
-        <h2 className="block font-bold text-2xl my-2 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 bg-clip-text text-transparent">
+        <h2 className="block font-bold text-2xl my-2 text-neutral-800">
           Preview
         </h2>
         <p className="mt-4 mx-4 md:my-2 w-10/12">{text}</p>
         <span className="mt-4 font-semibold md:text-xl text-md bg-gradient-to-b from-gray-900 to-gray-600 bg-clip-text text-transparent">
-          Minutes Read: {0.08 * text.split(" ").length} min
+          Minutes Read:{" "}
+          {text ? 0.08 * text.split(" ").length + " min" : "0 min"}
         </span>
       </div>
     </div>
